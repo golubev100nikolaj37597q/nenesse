@@ -338,7 +338,24 @@ if ($_SESSION['user_role'] !== 'admin') {
               <!-- Body -->
             </div>
             <!-- End Card -->
+            <div class="card mb-3">
+              <div class="card-header d-flex " style="justify-content: space-between;">
+                <h2 class="card-title h4">Review</h2>
+                <div class="justify-content-end">
+                  <button type="button" id="button_send1" class="btn btn-primary" style="padding: 0px 5px; vertical-align: unset;" onclick="createReviewBlock()" control-id="ControlID-7">+</button>
+                </div>
+              </div>
 
+              <!-- Body -->
+              <div class="card-body">
+                <!-- Form -->
+                <div id="save_settings">
+
+
+                </div>
+                <!-- End Form -->
+              </div>
+            </div>
             <!-- Card -->
             <div class="card mb-3 mb-lg-5">
               <!-- Header -->
@@ -1762,6 +1779,132 @@ if ($_SESSION['user_role'] !== 'admin') {
   </script>
 
   <!-- JS Plugins Init. -->
+  <script>
+    function createReviewBlock() {
+
+      var div = document.createElement("div");
+      div.style.borderBottom = "var(--bs-card-border-width) solid var(--bs-card-border-color)";
+      div.style.marginTop = "15px";
+      var row1 = document.createElement("div");
+      row1.className = "row mb-4";
+      div.appendChild(row1);
+
+      var label1 = document.createElement("label");
+      label1.setAttribute("for", "fio");
+      label1.className = "col-sm-3 col-form-label form-label";
+      label1.textContent = "Имя пользователя и оценка";
+      row1.appendChild(label1);
+
+      var col1 = document.createElement("div");
+      col1.className = "col-sm-9";
+      row1.appendChild(col1);
+
+      var input1 = document.createElement("input");
+      input1.type = "text";
+      input1.className = "form-control mb-3";
+      input1.name = "fio";
+      input1.id = "fio";
+      input1.placeholder = "Введите имя";
+      input1.setAttribute("aria-label", "Your first name");
+      input1.setAttribute("control-id", "ControlID-15");
+      col1.appendChild(input1);
+
+      var input2 = document.createElement("input");
+      input2.type = "text";
+      input2.className = "form-control";
+      input2.name = "evaluation";
+      input2.id = "evaluation";
+      input2.placeholder = "Введите оценку(0-5)";
+      input2.setAttribute("aria-label", "Your last name");
+      input2.setAttribute("control-id", "ControlID-16");
+      col1.appendChild(input2);
+
+      var row2 = document.createElement("div");
+      row2.className = "row mb-4";
+      div.appendChild(row2);
+
+      var label2 = document.createElement("label");
+      label2.setAttribute("for", "review_text");
+      label2.className = "col-sm-3 col-form-label form-label";
+      label2.textContent = "Отзыв";
+      row2.appendChild(label2);
+
+      var col2 = document.createElement("div");
+      col2.className = "col-sm-9";
+      row2.appendChild(col2);
+
+      var input3 = document.createElement("input");
+      input3.type = "text";
+      input3.className = "form-control";
+      input3.name = "review_text";
+      input3.id = "review_text";
+      input3.placeholder = "Введите отзыв";
+      input3.setAttribute("aria-label", "Email");
+      input3.setAttribute("control-id", "ControlID-17");
+      col2.appendChild(input3);
+
+      var row3 = document.createElement("div");
+      row3.className = "row mb-4";
+      div.appendChild(row3);
+
+      var label3 = document.createElement("label");
+      label3.setAttribute("for", "review_image");
+      label3.className = "col-sm-3 col-form-label form-label";
+      label3.textContent = "Изображение";
+      row3.appendChild(label3);
+
+      var col3 = document.createElement("div");
+      col3.className = "col-sm-9";
+      row3.appendChild(col3);
+
+      var input4 = document.createElement("input");
+      input4.type = "text";
+      input4.className = "form-control";
+      input4.name = "review_image";
+      input4.id = "review_image";
+      input4.placeholder = "Введите ссылку на изображения в отзыве";
+      input4.setAttribute("aria-label", "Email");
+      input4.setAttribute("control-id", "ControlID-18");
+      col3.appendChild(input4);
+
+
+
+      const main_views = document.getElementById('save_settings');
+      main_views.appendChild(div);
+      return div;
+    }
+
+    function collectDataAndCreateJSON() {
+      // Создаем объект для хранения данных
+      var data = {};
+
+      // Массив имен, которые вас интересуют
+      var targetNames = ["fio", "evaluation", "review_text", "review_image"];
+
+      // Проходим по каждому имени в массиве и собираем данные
+      targetNames.forEach(function(name) {
+        var inputElements = document.querySelectorAll('input[name="' + name + '"]');
+
+        // Создаем массив для хранения значений с одинаковыми именами
+        var values = [];
+
+        // Проходим по всем input элементам с заданным именем и собираем значения
+        inputElements.forEach(function(input) {
+          values.push(input.value);
+        });
+
+        // Если есть значения для данного имени, добавляем их в объект data
+        if (values.length > 0) {
+          data[name] = values;
+        }
+      });
+
+      // Создаем JSON строку из данных
+      var jsonData = JSON.stringify(data);
+
+      return jsonData;
+    }
+  </script>
   <script>
     (function () {
       window.onload = function () {

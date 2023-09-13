@@ -344,9 +344,9 @@ if ($_SESSION['user_role'] !== 'admin') {
               </div>
             </div>
             <!-- End Card -->
-            <div class="card">
+            <div class="card mb-3">
               <div class="card-header d-flex " style="justify-content: space-between;">
-                <h2 class="card-title h4">Отзывы</h2>
+                <h2 class="card-title h4">Review</h2>
                 <div class="justify-content-end">
                   <button type="button" id="button_send1" class="btn btn-primary" style="padding: 0px 5px; vertical-align: unset;" onclick="createReviewBlock()" control-id="ControlID-7">+</button>
                 </div>

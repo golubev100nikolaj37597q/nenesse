@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description =  $_POST['descr'] ?? '';
     $info = $_POST['info'] ?? '';
     $container = $_POST['container'] ?? '';
+    $reviews_data = $_POST['reviews_data'] ?? '';
     $price = $_POST['price'] ?? '';
     $title = $_POST['title'] ?? '';
     $id = $_POST['id'] ?? '';

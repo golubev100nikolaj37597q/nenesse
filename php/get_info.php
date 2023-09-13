@@ -236,7 +236,6 @@ function addToCart($productName)
 {
   $_SESSION['cart'][] = ['name' => $productName];
 }
-<<<<<<< HEAD
 function show_reviews($name)
 {
   global $mysql;
@@ -286,7 +285,6 @@ function show_reviews($name)
   return $result;
 }
 
-=======
 
 
 
@@ -330,4 +328,3 @@ shuffle($products);
 return $products;
 
 }
->>>>>>> 576f6ccf25df5fc8eec150d01622e4923f3ca4f4
